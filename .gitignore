@@ -129,7 +129,6 @@ dmypy.json
 .pyre/
 
 # Project specific
-data
 .env
 .DS_Store
 chroma_db
