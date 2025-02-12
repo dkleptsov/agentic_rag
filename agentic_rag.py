@@ -30,6 +30,7 @@ from config import (
     REWRITE_MODEL,
     GENERATE_MODEL,
     AGENT_MODEL,
+    OPENAI_TEMPERATURE,
     RAG_PROMPT,
     CHUNK_SIZE,
     CHUNK_OVERLAP,
@@ -98,7 +99,7 @@ def grade_documents(state) -> Literal["generate", "rewrite"]:
     Returns:
         str: A decision for whether the documents are relevant or not
     """
-    model = ChatOpenAI(temperature=0, model=GRADER_MODEL, streaming=True)
+    model = ChatOpenAI(temperature=OPENAI_TEMPERATURE, model=GRADER_MODEL, streaming=True)
     llm_with_tool = model.with_structured_output(Grade)
 
     prompt = PromptTemplate(
@@ -148,7 +149,7 @@ def rewrite(state):
     Formulate an improved question: """,
         )
     ]
-    model = ChatOpenAI(temperature=0, model=REWRITE_MODEL, streaming=True)
+    model = ChatOpenAI(temperature=OPENAI_TEMPERATURE, model=REWRITE_MODEL, streaming=True)
     response = model.invoke(msg)
     return {"messages": [response]}
 
@@ -167,7 +168,7 @@ def generate(state):
     prompt = hub.pull(RAG_PROMPT)
     # print("*" * 20 + "Prompt[rlm/rag-prompt]" + "*" * 20)
     # prompt = hub.pull("rlm/rag-prompt").pretty_print()  # Show what the prompt looks like
-    llm = ChatOpenAI(model_name=GENERATE_MODEL, temperature=0, streaming=True)
+    llm = ChatOpenAI(model_name=GENERATE_MODEL, temperature=OPENAI_TEMPERATURE, streaming=True)
     rag_chain = prompt | llm | StrOutputParser()
     response = rag_chain.invoke({"context": docs, "question": question})
     return {"messages": [response]}
@@ -182,7 +183,7 @@ def agent(state):
         dict: The updated state with the agent response appended to messages
     """
     messages = state["messages"]
-    model = ChatOpenAI(temperature=0, streaming=True, model=AGENT_MODEL)
+    model = ChatOpenAI(temperature=OPENAI_TEMPERATURE, streaming=True, model=AGENT_MODEL)
     # model = model.bind_tools(tools)
     response = model.invoke(messages)
     return {"messages": [response]}

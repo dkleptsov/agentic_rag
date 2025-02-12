@@ -14,7 +14,6 @@ REWRITE_MODEL="gpt-4o-2024-08-06"
 GENERATE_MODEL = "gpt-4o-mini"
 AGENT_MODEL = "gpt-4-turbo"
 OPENAI_TEMPERATURE = 0
-OPENAI_STREAMING = True
 
 # RAG prompt
 RAG_PROMPT = "rlm/rag-prompt"
