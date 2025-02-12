@@ -2,8 +2,11 @@
 
 [![LangChain](https://img.shields.io/badge/LangChain-%23FF6A00.svg?style=for-the-badge&logo=langchain&logoColor=white)](https://python.langchain.com)
 [![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=openai&logoColor=white)](https://openai.com/)
-[![Chroma](https://img.shields.io/badge/Chroma-FFFFFF.svg?style=for-the-badge)](https://www.trychroma.com/)
+[![Chroma](https://img.shields.io/badge/Chroma-32CD32.svg?style=for-the-badge)](https://www.trychroma.com/)
 
+<p align="center">
+  <img src="images/Agentic_RAG.png" alt="Agentic RAG schema">
+</p>
 
 A sophisticated question-answering system implementing Retrieval-Augmented Generation (RAG) with agentic decision-making capabilities using LangChain and LangGraph.
 
@@ -88,9 +91,6 @@ graph TD
     F --> B
     E --> G[Final Answer]
 ```
-<p align="center">
-  <img src="images/Agentic_RAG.png" alt="Agentic RAG schema">
-</p>
 
 Core Components:
 1. Intelligent Agent (LLM)
