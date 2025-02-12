@@ -114,7 +114,7 @@ Core Components:
 - Multi-model support
 - Streamable output
 
-## 📁 Structure of the project
+## Structure of the project 📁
 ```
 ├── chroma_db                       # Directory for ChromaDB vector store
 ├── data                            # Directory for input data
